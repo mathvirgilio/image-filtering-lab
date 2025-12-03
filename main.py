@@ -4,7 +4,7 @@ import numpy as np
 from filters import apply_filter, apply_filter_DFT
 
 # Caminho para a imagem
-image_path = os.path.join('images', 'cameraman.jpg')
+image_path = os.path.join('images', 'fabio.png')
 
 # Carregar a imagem
 img = cv2.imread(image_path)
