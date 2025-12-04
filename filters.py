@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from fft import ifftshift, ifft2
 
 
 def h(size):
@@ -187,10 +188,10 @@ def _apply_filter_DFT_single_channel(image, wc, direction='both', filter_type='l
     G_shifted = F_shifted * H
     
     # Fazer ifftshift para voltar à ordem original
-    G = np.fft.ifftshift(G_shifted)
+    G = ifftshift(G_shifted)
     
     # Calcular a IDFT para voltar ao domínio espacial
-    g = np.fft.ifft2(G)
+    g = ifft2(G)
     
     # Pegar apenas a parte real (a parte imaginária deve ser ~0)
     filtered = np.real(g)

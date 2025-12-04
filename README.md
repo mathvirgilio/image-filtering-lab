@@ -80,6 +80,7 @@ O script aplica os seguintes filtros:
 ```
 image-filtering-lab/
 ├── filters.py              # Implementação dos filtros
+├── fft.py                  # Implementação própria de funções FFT
 ├── main.py                 # Script principal
 ├── requirements.txt        # Dependências do projeto
 ├── images/                 # Imagens de entrada
@@ -97,6 +98,16 @@ image-filtering-lab/
 - **`h(size)`**: Cria um kernel de filtro de média (passa-baixas) de tamanho `size×size`
 - **`apply_filter(image, size, filter_type)`**: Aplica filtro espacial passa-baixas ou passa-altas
 - **`apply_filter_DFT(image, wc, direction, filter_type)`**: Aplica filtro ideal no domínio da frequência
+
+### `fft.py`
+
+Implementação própria de funções FFT para processamento de imagens, compatíveis com `numpy.fft`:
+
+- **`ifft(x, n, axis, norm)`**: Calcula a IFFT (Inverse Fast Fourier Transform) 1D de um array
+- **`ifftshift(x, axes)`**: Inverte o deslocamento do zero de frequência aplicado por `fftshift`
+- **`ifft2(a, s, axes, norm)`**: Calcula a IFFT 2D (Inverse Fast Fourier Transform 2D) de um array
+
+Essas funções são utilizadas internamente por `apply_filter_DFT` para converter o sinal filtrado do domínio da frequência de volta ao domínio espacial.
 
 ### Parâmetros dos Filtros DFT
 
@@ -119,6 +130,7 @@ image-filtering-lab/
 
 - Convolução 2D no domínio espacial
 - Transformada de Fourier Discreta (DFT) 2D
+- Implementação própria de funções FFT (IFFT, IFFT2, IFFTSHIFT)
 - Filtros ideais passa-baixas e passa-altas
 - Processamento de imagens no domínio da frequência
 - Filtragem direcional (horizontal/vertical)
